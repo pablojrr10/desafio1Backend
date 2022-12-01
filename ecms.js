@@ -17,6 +17,16 @@ class ProductManager{
         else return this.product
     }
 
+    getValidar = (producto) => {
+        for(var propiedad in producto){
+            if (producto[propiedad] == undefined ){
+                console.log("vacio")
+            } else {
+                console.log("tiene datos")
+            }
+        }  
+    }
+
     addProduct = (title, description, price, thumbnail, stock, code) => {
         const id = this. getNextID()
         const product = {
@@ -26,9 +36,10 @@ class ProductManager{
             price,
             thumbnail,
             stock: stock ?? 0,
-            code: []
+            code
         }
-        this.productos.push(product)
+       this.productos.push(product)
+       this.getValidar(product)
     }
 }
 
@@ -36,7 +47,10 @@ const productManager = new ProductManager()
 productManager.addProduct ("tv", "55pulgadas full HD", 100,"tv.jpg", 10)
 console.log(productManager.getProduct());
 
-productManager.addProduct ("lavadora", "20kilos automatica", 200,"lavadora.jpg", 20)
+/*productManager.addProduct ("lavadora", "20kilos automatica", 200,"lavadora.jpg", 20)
 console.log(productManager.getProduct());
 
-productManager.getProductById(2);
+productManager.addProduct ("lavadora", "20kilos automatica", 200,"lavadora.jpg", 20, "code1")
+console.log(productManager.getProduct());
+
+productManager.getProductById(3);*/
